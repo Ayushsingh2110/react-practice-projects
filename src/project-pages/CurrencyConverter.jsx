@@ -3,9 +3,9 @@ import useCurrencyInfo from '../hooks/useCurrencyInfo'
 import { InputBox } from '../components'
 
 const CurrencyConverter = () => {
-    const [amount, setAmount] = useState(0)
+    const [amount, setAmount] = useState()
     const [fromCurrency, setFromCurrency] = useState("usd")
-    const [toCurrency, setToCurrency] = useState(second)
+    const [toCurrency, setToCurrency] = useState("")
     const [ConvertedAmount, setConvertedAmount] = useState(0)
 
     const currencyInfo = useCurrencyInfo(fromCurrency)
@@ -40,7 +40,6 @@ const CurrencyConverter = () => {
                         <div className="w-full mb-1">
                             <InputBox
                                 label="From"
-                                amount={amount}
                                 onAmountChange={(value) => setAmount(value)}
                                 onCurrencyChange={(value) => setFromCurrency(value)}
                                 currencyOptions={CurrencyOptions}
@@ -51,7 +50,7 @@ const CurrencyConverter = () => {
                             <button
                                 type="button"
                                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
-                                
+                                onClick={swap}
                             >
                                 swap
                             </button>
